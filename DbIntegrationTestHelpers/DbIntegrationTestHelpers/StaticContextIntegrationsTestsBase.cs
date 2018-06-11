@@ -20,7 +20,7 @@ namespace DbIntegrationTestHelpers
         }
 
         private const string ConnectionString =
-            @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=telimena-AutomatedTestsDb;Integrated Security=SSPI;MultipleActiveResultSets=true;";
+            @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=IntegrationTestHelpersDb;Integrated Security=SSPI;MultipleActiveResultSets=true;";
 
         private static readonly T ContextBackingField = StaticContextIntegrationsTestsBase<T>.GetContextInstance<T>();
         public T Context => StaticContextIntegrationsTestsBase<T>.ContextBackingField;
