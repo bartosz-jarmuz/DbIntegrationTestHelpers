@@ -13,8 +13,15 @@ namespace DbIntegrationTestHelpers
     using System.Linq;
     using NUnit.Framework;
 
+    /// <summary>
+    /// This is a base class for unit test classes where the context is a STATIC instance, shared for all tests classes
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class StaticContextIntegrationsTestsBase<T> where T : DbContext
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected StaticContextIntegrationsTestsBase()
         {
         }
@@ -23,8 +30,17 @@ namespace DbIntegrationTestHelpers
             @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=IntegrationTestHelpersDb;Integrated Security=SSPI;MultipleActiveResultSets=true;";
 
         private static readonly T ContextBackingField = StaticContextIntegrationsTestsBase<T>.GetContextInstance<T>();
+
+        /// <summary>
+        /// The DbContext
+        /// </summary>
         public T Context => StaticContextIntegrationsTestsBase<T>.ContextBackingField;
 
+        /// <summary>
+        /// Constructs an instance of the context using Activator
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T GetContextInstance<T>() where T : DbContext
         {
             try
@@ -40,22 +56,25 @@ namespace DbIntegrationTestHelpers
             }
         }
 
+        /// <summary>
+        /// Resets the change tracker
+        /// </summary>
         [TearDown]
-        public void ResetChangeTracker()
+        public virtual void ResetChangeTracker()
         {
             IEnumerable<DbEntityEntry> changedEntriesCopy = StaticContextIntegrationsTestsBase<T>.ContextBackingField.ChangeTracker.Entries()
-                .Where(e => e.State == EntityState.Added ||
-                            e.State == EntityState.Modified ||
-                            e.State == EntityState.Deleted
-                );
+                .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified || e.State == EntityState.Deleted);
             foreach (DbEntityEntry entity in changedEntriesCopy)
             {
                 StaticContextIntegrationsTestsBase<T>.ContextBackingField.Entry(entity.Entity).State = EntityState.Detached;
             }
         }
 
+        /// <summary>
+        /// Performs the test setup
+        /// </summary>
         [SetUp]
-        public void Setup()
+        public virtual void Setup()
         {
             Database.SetInitializer(new DropCreateDatabaseAlwaysAndSeed());
             StaticContextIntegrationsTestsBase<T>.ContextBackingField.Database.Initialize(false);
