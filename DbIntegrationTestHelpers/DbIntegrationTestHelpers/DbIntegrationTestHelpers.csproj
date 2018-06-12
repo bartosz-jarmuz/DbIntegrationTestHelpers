@@ -51,8 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DropCreateDatabaseAlwaysAndSeed.cs" />
-    <Compile Include="StaticContextIntegrationsTestsBase.cs" />
+    <Compile Include="DbContextProvider.cs" />
+    <Compile Include="DropCreateDatabaseAlwaysWithConnectionClose.cs" />
+    <Compile Include="IntegrationsTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

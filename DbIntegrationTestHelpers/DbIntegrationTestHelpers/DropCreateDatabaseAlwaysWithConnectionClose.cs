@@ -2,7 +2,7 @@
 {
     using System.Data.Entity;
 
-    internal sealed class DropCreateDatabaseAlwaysAndSeed : DropCreateDatabaseAlways<DbContext>
+    internal sealed class DropCreateDatabaseAlwaysWithConnectionClose : DropCreateDatabaseAlways<DbContext>
     {
         public override void InitializeDatabase(DbContext context)
         {
@@ -15,11 +15,6 @@
             }
 
             base.InitializeDatabase(context);
-        }
-
-        protected override void Seed(DbContext context)
-        {
-            context.SaveChanges();
         }
     }
 }
