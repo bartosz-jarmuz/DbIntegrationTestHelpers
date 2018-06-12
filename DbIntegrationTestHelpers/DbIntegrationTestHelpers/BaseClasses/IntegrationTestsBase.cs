@@ -20,7 +20,7 @@ namespace DbIntegrationTestHelpers
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [TestFixture]
-    public abstract class IntegrationsTestsBase<T> : HelpersBase<T> where T : DbContext
+    public abstract class IntegrationTestsBase<T> : HelpersBase<T> where T : DbContext
     {
 
         private T _context;

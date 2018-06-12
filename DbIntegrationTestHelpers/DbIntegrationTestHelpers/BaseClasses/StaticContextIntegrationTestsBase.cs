@@ -9,7 +9,7 @@
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [TestFixture]
-    public abstract class StaticContextIntegrationsTestsBase<T> : HelpersBase<T> where T : DbContext
+    public abstract class StaticContextIntegrationTestsBase<T> : HelpersBase<T> where T : DbContext
     {
        
         private static T context = new DbContextProvider<T>().GetContextInstance();

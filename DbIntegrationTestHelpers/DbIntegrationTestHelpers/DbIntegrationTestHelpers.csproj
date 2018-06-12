@@ -55,9 +55,9 @@
     <Compile Include="DbContextProvider.cs" />
     <Compile Include="DbContextService.cs" />
     <Compile Include="DropCreateDatabaseAlwaysWithConnectionClose.cs" />
-    <Compile Include="BaseClasses\IntegrationsTestsBase.cs" />
+    <Compile Include="BaseClasses\IntegrationTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseClasses\StaticIntegrationsTestsBase.cs" />
+    <Compile Include="BaseClasses\StaticContextIntegrationTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
