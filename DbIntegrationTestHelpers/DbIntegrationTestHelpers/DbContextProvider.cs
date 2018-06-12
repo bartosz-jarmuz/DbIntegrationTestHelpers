@@ -21,17 +21,7 @@
         /// <returns></returns>
         public virtual T GetContextInstance()
         {
-            try
-            {
-                var type = typeof(T);
-                var ctx = (T)Activator.CreateInstance(type, this.ConnectionString);
-
-                return ctx;
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException("Your DB context has to have a constructor which allows setting a connection string", ex);
-            }
+            return DbContextService.CreateInstance<T>(this.ConnectionString);
         }
     }
 }

@@ -51,10 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\HelpersBase.cs" />
     <Compile Include="DbContextProvider.cs" />
+    <Compile Include="DbContextService.cs" />
     <Compile Include="DropCreateDatabaseAlwaysWithConnectionClose.cs" />
-    <Compile Include="IntegrationsTestsBase.cs" />
+    <Compile Include="BaseClasses\IntegrationsTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BaseClasses\StaticIntegrationsTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
