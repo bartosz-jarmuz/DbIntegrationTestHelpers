@@ -10,9 +10,37 @@ Why unit tests are not enough?
 
 # Installation 
 Available as a Nuget package - https://www.nuget.org/packages/DbIntegrationTestHelpers/
+
 Just run `Install-Package DbIntegrationTestHelpers`
 
 # Usage
+
+## General
+Regardless of which approach (instance or static) you choose as the base class for your test class, you gain access to a `this.Context` property, which will contain your DbContext.
+
+**Your DbContext is required to have a constructor which allows passing connection string**.
+```c#
+ public MyDbContext(string nameOrConnectionString) : base(nameOrConnectionString){}
+```
+
+
+The base class allows also specifying a SeedAction, as follows:
+```c#
+protected override Action SeedAction => () =>
+        {
+            SomeStaticClass.DoSomeSeeding(this.Context);
+            this.DoSomeMoreSeeding();
+            //or even seed directly
+            this.Context.Products.Add(new Product(){Name="TheProduct"});
+            this.Context.SaveChanges();
+        };
+```
+## Instance approach
+Add `IntegrationTestHelpersBase<T>` as base class for your test class. The type parameter should be your DbContext type.
+
+You now have access to `this.Context` which is instance of your DbContext - the database behind it will be dropped and recreated with each test method run - this means there is a little overhead for each test, during which a database is created and seeded. In my tests, the overhead is approximately 2 seconds for each test.
+
+## Static approach (faster, but tests are interdependent)
 Add `StaticContextIntegrationsTestsBase<T>` as base class for your test class. The type parameter should be your DbContext type.
 
 You now have access to `this.Context` which is a **static** object of your DbContext. 
@@ -21,7 +49,6 @@ Due to that, bear in mind that the tests methods you write will have to be struc
 The tests will use a new, test only database (LocalDb). 
 **The database is wiped only when a new test run is exectuted**, so you can have a look at what entries were added etc., anytime after the tests (regardless if succeeded or failed).
 
-**Your DbContext is required to have a constructor which allows passing connection string**.
 
 # Why not in-memory?
 There are some in-memory DbContext providers, such as EFFORT. Why not use them?
