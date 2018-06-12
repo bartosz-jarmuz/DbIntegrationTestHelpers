@@ -62,7 +62,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Properties\DbIntegrationTestsHelpers.nuspec" />
+    <None Include="Properties\DbIntegrationTestHelpers.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
