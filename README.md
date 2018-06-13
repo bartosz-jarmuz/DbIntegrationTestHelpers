@@ -1,5 +1,5 @@
 # Introduction ![BuildStatus](https://bartosz-jarmuz.visualstudio.com/_apis/public/build/definitions/2f586b4d-795d-4c87-b2c7-5227ff449c4a/13/badge)
-A tiny helper class that contains some boilerplate code for creating DB integration tests in EntityFramework.  
+A tiny helper assembly that contains some boilerplate code for creating DB integration tests in EntityFramework.  
 Remember - unit tests do not allow you to test everything *that you should* test. 
 Integration tests are good, especially if writing them is simple.
 Don't take my word for it, have a read, e.g. here: https://blog.kentcdodds.com/write-tests-not-too-many-mostly-integration-5e8c7fff591c or here https://gist.github.com/alistairmgreen/ca3f7baddb737fd91e6bf7399ba6deeb
