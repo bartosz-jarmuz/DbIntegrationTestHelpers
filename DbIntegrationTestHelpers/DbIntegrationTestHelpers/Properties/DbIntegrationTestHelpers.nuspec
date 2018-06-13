@@ -12,7 +12,4 @@
     <tags>integration test helper entity framework database utility productivity generic testing  ef automated unit testing</tags>
     <projectUrl>https://github.com/bartosz-jarmuz/DbIntegrationTestsHelpers</projectUrl>
   </metadata>
-  <files>
-    <file src="lib\**" target="lib/{framework name}[{version}]" />
-  </files>
 </package>
