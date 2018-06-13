@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A tiny helper library for creating database integration tests</description>
     <copyright>Copyright © Bartosz Jarmuż 2018</copyright>
-    <tags>integration test helper entity framework database utility productivity generic testing  ef automated unit testing</tags>
+    <tags>integration test helper entity framework database utility productivity generic testing  ef automated unit testing c#</tags>
     <projectUrl>https://github.com/bartosz-jarmuz/DbIntegrationTestsHelpers</projectUrl>
   </metadata>
 </package>
