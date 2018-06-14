@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbIntegrationTestHelpers", "DbIntegrationTestHelpers\DbIntegrationTestHelpers.csproj", "{352A5414-A46B-4595-AF16-6C05260F144B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkSample", "EntityFrameworkSample\EntityFrameworkSample.csproj", "{2CD6726B-067C-4109-8372-4B37E14B0A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkProjectTests", "EntityFrameworkProjectTests\EntityFrameworkProjectTests.csproj", "{DFF7E88C-DA97-4891-AC50-B48926C3D8D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{352A5414-A46B-4595-AF16-6C05260F144B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{352A5414-A46B-4595-AF16-6C05260F144B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{352A5414-A46B-4595-AF16-6C05260F144B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CD6726B-067C-4109-8372-4B37E14B0A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD6726B-067C-4109-8372-4B37E14B0A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD6726B-067C-4109-8372-4B37E14B0A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD6726B-067C-4109-8372-4B37E14B0A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF7E88C-DA97-4891-AC50-B48926C3D8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF7E88C-DA97-4891-AC50-B48926C3D8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF7E88C-DA97-4891-AC50-B48926C3D8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF7E88C-DA97-4891-AC50-B48926C3D8D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
