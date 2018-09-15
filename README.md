@@ -35,13 +35,18 @@ protected override Action SeedAction => () =>
             this.Context.SaveChanges();
         };
 ```
-## Instance approach
-Add `IntegrationTestHelpersBase<T>` as base class for your test class. The type parameter should be your DbContext type.
+## Context shared in test class
+Add `IntegrationTestsContextSharedPerClasss<T>` as base class for your test class. The type parameter should be your DbContext type.
 
-You now have access to `this.Context` which is instance of your DbContext - the database behind it will be dropped and recreated with each test method run - this means there is a little overhead for each test, during which a database is created and seeded. In my tests, the overhead is approximately 2 seconds for each test.
+You now have access to `this.Context` which is instance of your DbContext - the database behind it will be shared for all unit tests within this test class. This is an approach which balances the indenpendence of tests with quick execution.
 
-## Static approach (faster, but tests are interdependent)
-Add `StaticContextIntegrationsTestsBase<T>` as base class for your test class. The type parameter should be your DbContext type.
+## New context for each test
+Add `IntegrationTestsContextNotShared<T>` as base class for your test class. The type parameter should be your DbContext type.
+
+You now have access to `this.Context` which is instance of your DbContext - the database behind it will be dropped and recreated with each test method run - this means there is an overhead for each test, during which a database is created and seeded. It might be large, depending on machine and database.
+
+## Context shared for all tests in all test classes
+Add `IntegrationTestsContextSharedGlobally<T>` as base class for your test class. The type parameter should be your DbContext type.
 
 You now have access to `this.Context` which is a **static** object of your DbContext. 
 Due to that, bear in mind that the tests methods you write will have to be structured in a certain way (you cannot have each test reference a mock entity with ID 1).
