@@ -7,7 +7,7 @@
     using NUnit.Framework.Internal;
 
     [TestFixture]
-    public class TestInstanceContext_AddDuplicateFromSeed : IntegrationTestsContextNotShared<BookStoreDbContext>
+    public class TestStaticPerClassInstanceContext_AddDuplicateFromSeed : IntegrationTestsContextSharedPerClass<BookStoreDbContext>
     {
         protected override Action SeedAction => () =>
         {

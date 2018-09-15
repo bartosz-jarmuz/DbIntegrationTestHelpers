@@ -20,31 +20,18 @@ namespace DbIntegrationTestHelpers
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [TestFixture]
-    public abstract class IntegrationTestsBase<T> : HelpersBase<T> where T : DbContext
+    public abstract class IntegrationTestsContextSharedPerClass<T> : HelpersBase<T> where T : DbContext
     {
-
-        private T _context;
 
         /// <summary>
         /// The DbContext
         /// </summary>
-        public override T Context
-        {
-            get
-            {
-                if (this._context == null)
-                {
-                    this._context = this.DbContextProvider.GetContextInstance();
-                }
-                return this._context;
-            }
-            protected set => this._context = value;
-        }
+        public override T Context { get; protected set; }
 
         /// <summary>
         /// Resets the change tracker
         /// </summary>
-        [TearDown]
+        [OneTimeTearDown]
         public virtual void TearDown()
         {
             DbContextService.ResetChangeTracker(this.Context);
@@ -53,12 +40,11 @@ namespace DbIntegrationTestHelpers
         /// <summary>
         /// Performs the test setup
         /// </summary>
-        [SetUp]
+        [OneTimeSetUp]
         public virtual void SetUp()
         {
-            Database.SetInitializer<T>(new DropCreateDatabaseAlwaysWithConnectionClose());
-            DbContextService.DropDatabase(this.Context);
             this.Context = this.DbContextProvider.GetContextInstance();
+            Database.SetInitializer<T>(new DropCreateDatabaseAlwaysWithConnectionClose());
             this.Context.Database.Initialize(true);
             this.SeedAction?.Invoke();
         }

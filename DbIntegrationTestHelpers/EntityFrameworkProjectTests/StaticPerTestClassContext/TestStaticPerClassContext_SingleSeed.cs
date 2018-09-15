@@ -8,12 +8,12 @@
     using NUnit.Framework.Internal;
 
     [TestFixture]
-    public class TestStaticContext_SingleSeed : IntegrationTestsContextSharedGlobally<BookStoreDbContext>
+    public class TestStaticPerClassContext_SingleSeed : IntegrationTestsContextSharedPerClass<BookStoreDbContext>
     {
         private int counter = 0;
         protected override Action SeedAction => () =>
         {
-            this.Context.Authors.Add(new Author() {Name = "Bill_TestStaticContext_SingleSeed"+this.counter });
+            this.Context.Authors.Add(new Author() { Name = "Bill_TestStaticContext_SingleSeed" + this.counter });
             this.Context.SaveChanges();
         }; //name is unique, but seed will only run one time
 

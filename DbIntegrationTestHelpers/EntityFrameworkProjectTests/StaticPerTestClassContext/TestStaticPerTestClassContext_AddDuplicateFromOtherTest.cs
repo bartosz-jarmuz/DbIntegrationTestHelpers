@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class TestStaticContext_AddDuplicateFromOtherTest : IntegrationTestsContextSharedGlobally<BookStoreDbContext>
+    public class TestStaticPerTestClassContext_AddDuplicateFromOtherTest : IntegrationTestsContextSharedPerClass<BookStoreDbContext>
     {
         private int counter = 0;
 
@@ -21,7 +21,7 @@
         {
             //not possible to determine which test runs first, so in both cases same code applies 
             //if there are no authors, add one, if there are any, add same one again and expect failure
-            if (!this.Context.Authors.Any(x=>x.Name == "Bill_TestStaticContext_AddDuplicateFromOtherTest"))
+            if (!this.Context.Authors.Any(x => x.Name == "Bill_TestStaticContext_AddDuplicateFromOtherTest"))
             {
                 if (this.counter > 0)
                 {
@@ -32,7 +32,7 @@
                 this.counter++;
                 return;
             }
-            else 
+            else
             {
                 this.Context.Authors.Add(new Author() { Name = "Bill_TestStaticContext_AddDuplicateFromOtherTest" });
                 Assert.That(() => { this.Context.SaveChanges(); },

@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class TestInstanceContext_AddDuplicateFromOtherTest : IntegrationTestsBase<BookStoreDbContext>
+    public class TestInstanceContext_AddDuplicateFromOtherTest : IntegrationTestsContextNotShared<BookStoreDbContext>
     {
         [Test]
         public void TestOne()

@@ -8,7 +8,7 @@ namespace EntityFrameworkProjectTests
     using NUnit.Framework.Internal;
 
     [TestFixture]
-    public class TestIncorrectConstructor : IntegrationTestsBase<DbContextWithoutProperConstructor>
+    public class TestIncorrectConstructor : IntegrationTestsContextNotShared<DbContextWithoutProperConstructor>
     {
         [SetUp]
         public override void SetUp()

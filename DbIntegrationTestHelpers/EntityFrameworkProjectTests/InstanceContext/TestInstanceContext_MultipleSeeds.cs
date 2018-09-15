@@ -8,7 +8,7 @@
     using NUnit.Framework.Internal;
 
     [TestFixture]
-    public class TestInstanceContext_MultipleSeeds : IntegrationTestsBase<BookStoreDbContext>
+    public class TestInstanceContext_MultipleSeeds : IntegrationTestsContextNotShared<BookStoreDbContext>
     {
         #region Overrides of HelpersBase<MyTestDbContext>
         protected override Action SeedAction => () =>
